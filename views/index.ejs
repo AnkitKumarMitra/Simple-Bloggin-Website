@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Blogging Website</h1>
+        <a href="/new" class="btn new-post">New Post</a>
+        <% if(locals.content) {%>
+            <% content.forEach(post => { %>
+                <div class="posts">
+                    <h2 class="post-title"><%= post.title %></h2>
+                    <p class="post-date"><%= post.date %></p>
+                    <p class="post-content"><%= post.content %></p>
+                    <p class="post-author"><%= post.author %></p>
+                    <div class="btns">
+                        <a href="/edit/<%= post.id %>" class="btn edit-post">Edit</a> <a href="/delete/<%= post.id %>" class="btn delete-post">Delete</a>
+                    </div>
+                    <hr>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+</body>
+</html>
